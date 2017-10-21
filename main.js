@@ -31,11 +31,11 @@ function pickALetter() {
 		wordDisplay = displayedObj.checkWord(wordToGuess, letterToGuess, wordDisplay);
 		console.log(wordDisplay);
 
-		if(displayedObj.numGuessed === wordLength) {
+		if(displayedObj.numGuessed == wordLength) {
 			winOrLose = "won";
 			gameOver();
 			return;
-		} else if (displayedObj.numGuessed === 0) {
+		} else if (displayedObj.numGuessed == 0) {
 			winOrLose = "lose";
 			gameOver();
 			return;
@@ -46,12 +46,11 @@ function pickALetter() {
 };
 
 function gameOver() {
-	console.log("GAME OVER!");
 
 if (winOrLose === "won") {
-	console.log("You WON!");
+	console.log("Game Over. You WON!");
 }   else if (winOrLose === "lose") {
-	console.log("Sorry you lose. Try again!");
+	console.log("Sorry. Try again!");
 }
 	return;
 };

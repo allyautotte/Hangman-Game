@@ -7,8 +7,8 @@ var Word = function(word, letter){
 	this.numGuessed = 0;
 	this.guessesLeft = 10;
 
-	var letterOrBlank = new Letter();
-		for (var i=0; i < wordLetters.length; i++) {
+	var letterOrBlank = new Letter(letter);
+		for (var i=0; i<wordLetters.length; i++) {
 			wordLetters[i] = letterOrBlank.blank;
 	}
 
@@ -16,15 +16,15 @@ var Word = function(word, letter){
 
 
 	this.checkWord = function(word, letter, wordDisplay){	
-	    wordLetters = word.split("");
-		var letterOrBlank = new Letter();
-		this.displayCities = wordDisplay.split("");
+	    var wordLetters = word.split("");
+		var letterOrBlank = new Letter(letter);
+		this.displayCities = wordLetters;
 
 		var correct = false;
 
-		for (var i = 0; i<wordLetters.length; i++) {
+		for (var i=0; i<wordLetters.length; i++) {
 			if (this.displayCities[i] === "_") {  
-				if (citiesArray[i] === letter) {
+				if (wordLetters[i] === letter) {
 					this.displayCities[i] = letterOrBlank.letter;
 					this.numGuessed++;
 					correct = true;
