@@ -1,3 +1,5 @@
+var Letter = require("./Letter.js");
+var citiesArray = require("./citiesArray.js");
 
 var Word = function(word, letter){
 	var wordLetters = word.split("");
@@ -6,23 +8,23 @@ var Word = function(word, letter){
 	this.guessesLeft = 10;
 
 	var letterOrBlank = new Letter();
-	for (var i=0; i < citiesArray.length; i++) {
-		wordLetters[i] = letterOrBlank.blank;
+		for (var i=0; i < wordLetters.length; i++) {
+			wordLetters[i] = letterOrBlank.blank;
 	}
 
 	this.display = wordLetters.join("");
 
 
-this.checkWord = function(word, letter, wordDisplay){
-	wordLetters = word.split("");
+	this.checkWord = function(word, letter, wordDisplay){	
+	    wordLetters = word.split("");
+		var letterOrBlank = new Letter();
+		this.displayCities = wordDisplay.split("");
 
-	var letterOrBlank = new Letter();
-	this.displayCities = wordLetters.split("");
-	var correct = false;
+		var correct = false;
 
-	for (var i = 0; i>wordLetters.length; i++) {
-		if (this.displayCities[i] === "_") {  
-				if (wordLetters[i] === letter) {
+		for (var i = 0; i<wordLetters.length; i++) {
+			if (this.displayCities[i] === "_") {  
+				if (citiesArray[i] === letter) {
 					this.displayCities[i] = letterOrBlank.letter;
 					this.numGuessed++;
 					correct = true;
@@ -45,4 +47,3 @@ this.checkWord = function(word, letter, wordDisplay){
 
 
 module.exports = Word;
-module.exports = Letter;
